@@ -1,0 +1,84 @@
+10
+
+dir
+0
+svn://admin@192.168.1.131/YieTai7/YinYueTai/D3/ShareSDK_v2.5.1/Extend
+svn://admin@192.168.1.131
+add
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+e367c6d1-38d5-4efc-98c2-7272a0e46e58
+
+GooglePlusSDK
+dir
+
+
+
+add
+
+Pinterest.embeddedframework
+dir
+
+
+
+add
+
+SDKExport
+dir
+
+
+
+add
+
+TencentOpenApi_IOS_Bundle.bundle
+dir
+
+
+
+add
+
+TencentOpenAPI.framework
+dir
+
+
+
+add
+
+RenRenSDK
+dir
+
+
+
+add
+
+TencentWeiboSSO
+dir
+
+
+
+add
+
+libWeiboSDK
+dir
+
+
+
+add
+

@@ -1,0 +1,23 @@
+//
+// Prefix header for all source files of the 'YinYueTai' target in the 'YinYueTai' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+#endif
+#import "UIViewExt.h"
+#import <QuartzCore/QuartzCore.h>
+#define kScreenHeight [UIScreen mainScreen].bounds.size.height
+#define kScreenWidth [UIScreen mainScreen].bounds.size.width
+#define kStatusBarHeight 20
+#define kPageChangeNotification @"kPageChangeNotification"
+#define kMVSelectIndexChangeNotification @"kMVSelectIndexChangeNotification"
+#define kVRankSelectIndexChangeNotification @"kVRankSelectIndexChangeNotification"
+#define CommentColor [UIColor colorWithRed:0.537 green:0.799 blue:0.275 alpha:1.000];

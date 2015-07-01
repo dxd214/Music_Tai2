@@ -1,0 +1,112 @@
+10
+
+dir
+0
+svn://admin@192.168.1.131/YieTai7/YinYueTai/MainViewController/Record
+svn://admin@192.168.1.131
+add
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+e367c6d1-38d5-4efc-98c2-7272a0e46e58
+
+DownMV.h
+file
+
+
+
+add
+
+DownVC.xib
+file
+
+
+
+add
+
+DownCell.m
+file
+
+
+
+add
+
+WatchRecordVC.h
+file
+
+
+
+add
+
+DownMV.m
+file
+
+
+
+add
+
+RecordModel.h
+file
+
+
+
+add
+
+DownVC.h
+file
+
+
+
+add
+
+DownCell.xib
+file
+
+
+
+add
+
+WatchRecordVC.m
+file
+
+
+
+add
+
+RecordModel.m
+file
+
+
+
+add
+
+DownVC.m
+file
+
+
+
+add
+
+DownCell.h
+file
+
+
+
+add
+

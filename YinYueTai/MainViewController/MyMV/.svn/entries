@@ -1,0 +1,63 @@
+10
+
+dir
+0
+svn://lxd@192.168.1.131/YieTai7/YinYueTai/MainViewController/MyMV
+svn://lxd@192.168.1.131
+add
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+e367c6d1-38d5-4efc-98c2-7272a0e46e58
+
+MyMVViewController.m
+file
+
+
+
+add
+
+MyMVCell.m
+file
+
+
+
+add
+
+MyMVCell.xib
+file
+
+
+
+add
+
+MyMVViewController.h
+file
+
+
+
+add
+
+MyMVCell.h
+file
+
+
+
+add
+

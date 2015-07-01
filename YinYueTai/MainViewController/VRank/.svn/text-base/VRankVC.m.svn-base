@@ -1,0 +1,288 @@
+//
+//  VRankVC.m
+//  YinYueTai
+//
+//  Created by 张佳仁 on 13-10-23.
+//  Copyright (c) 2013年 KSY. All rights reserved.
+//
+
+#import "VRankVC.h"
+#import "MVmodel.h"
+
+
+@interface VRankVC ()
+{
+    UIButton *_leftButton;
+    UIButton *_rightButton;
+}
+@end
+
+@implementation VRankVC
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+        // 选中标题更改通知
+        self.MVArray = [NSArray array];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectVRankIndexChange) name:kVRankSelectIndexChangeNotification object:nil];
+        
+    }
+    return self;
+}
+
+- (void)selectVRankIndexChange
+{
+    [self loadMVData];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
+    if ([self isOline]) {
+        [self loadData];
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    UIImage *navImg = [UIImage imageNamed:@"Title_VList.png"];
+    [self titleImageSet:navImg];
+    
+}
+
+
+
+- (void)tapAction{
+    [super tapAction];
+    if ([self isOline]) {
+        [self loadData];
+    }
+    
+}
+
+- (void)initTitleView
+{
+    NSMutableArray *codeArr = [NSMutableArray arrayWithCapacity:self.ereasArray.count];
+    NSMutableArray *nameArr = [NSMutableArray arrayWithCapacity:self.ereasArray.count];
+    for (NSDictionary *dic in self.ereasArray)
+    {
+        NSString *codeString = [dic objectForKey:@"code"];
+        [codeArr addObject:codeString];
+        NSString *nameString = [dic objectForKey:@"name"];
+        [nameArr addObject:nameString];
+    }
+    _titleTableView = [[TitleTableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 40) style:UITableViewStylePlain];
+    _titleTableView.userInteractionEnabled = YES;
+    _titleTableView.dataList = [nameArr retain];
+    _titleTableView.sourceData = self.ereasArray;
+    [self.view addSubview:_titleTableView];
+    [_titleTableView reloadData];
+    
+    // ----------- 打榜日期视图部分 -----------
+    _publishDateView = [[UIView alloc] initWithFrame:CGRectMake(0, _titleTableView.bottom, kScreenWidth, 38)];
+    _publishDateView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"customBackground2"]];
+    [self.view addSubview:_publishDateView];
+    
+    UIImageView *shadowImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 37, kScreenWidth, 5)];
+    shadowImgView.image = [UIImage imageNamed:@"TitleViewShadow.png"];
+    [_publishDateView addSubview:shadowImgView];
+    [shadowImgView release];
+    
+    UIImageView *lightImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, -2, kScreenWidth, 4)];
+    lightImgView.image = [UIImage imageNamed:@"horizontalLine.png"];
+    [_publishDateView addSubview:lightImgView];
+    [lightImgView release];
+    
+    _leftButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
+    _leftButton.frame = CGRectMake(30, 0, 38, 38);
+    [_leftButton setImage:[UIImage imageNamed:@"VList_Left.png"] forState:UIControlStateNormal];
+    [_leftButton setImage:[UIImage imageNamed:@"VList_Left_Sel.png"] forState:UIControlStateHighlighted];
+    [_leftButton addTarget:self action:@selector(leftButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    [_publishDateView addSubview:_leftButton];
+    
+    _rightButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
+    _rightButton.frame = CGRectMake(kScreenWidth - 68, 0, 38, 38);
+    [_rightButton setImage:[UIImage imageNamed:@"VList_Right.png"] forState:UIControlStateNormal];
+    [_rightButton setImage:[UIImage imageNamed:@"VList_Right_Sel.png"] forState:UIControlStateHighlighted];
+    [_rightButton addTarget:self action:@selector(rightButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    [_publishDateView addSubview:_rightButton];
+    [_rightButton release];
+    
+    _publishDateLabel = [[UILabel alloc] initWithFrame:CGRectMake(70, 9, kScreenWidth - 140, 20)];
+    _publishDateLabel.textColor = [UIColor whiteColor];
+    _publishDateLabel.font = [UIFont systemFontOfSize:13];
+    _publishDateLabel.backgroundColor = [UIColor clearColor];
+    _publishDateLabel.textAlignment = NSTextAlignmentCenter;
+    [_publishDateView addSubview:_publishDateLabel];
+    
+}
+
+
+
+- (void)initMvView
+{
+    if (!_mvTableView)
+    {
+        _mvTableView  = [[BaseTableView alloc] initWithFrame:CGRectMake(0, _titleTableView.bottom + 38, kScreenWidth, kScreenHeight - 20 - 44 - 49 - 40 - 38) style:UITableViewStylePlain];
+        [self.view addSubview:_mvTableView];
+        
+        _mvTableView.backgroundColor = [UIColor clearColor];
+        _mvTableView.separatorColor = [UIColor clearColor];
+        _mvTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    }
+    _mvTableView.showArray = _MVArray;
+    [_mvTableView reloadData];
+}
+
+
+
+- (void)loadData{
+    self.view.userInteractionEnabled = NO;
+    NSString *jsonRequest = [self.paramDic JSONRepresentation];
+    
+    NSMutableDictionary *jsonDict = [NSMutableDictionary dictionaryWithObject:jsonRequest forKey:@"deviceinfo"]
+    ;
+    [jsonDict setObject:@"20" forKey:@"size"];
+    [jsonDict setObject:@"0" forKey:@"offset"];
+//    NSLog(@"%d", _ereasArray.count);
+    if (!_ereasArray.count) {   //如果有数组了 就不在请求
+        [DataService requestWithURL:@"http://mapi.yytcdn.com/vchart/get_vchart_areas.json" params:jsonDict httpMethod:@"POST" finishBlock:^(id result) {
+            self.ereasArray = result;
+            if (self.ereasArray.count > 0)
+            {
+                // 数据请求成功后再初始化视图
+                [self initTitleView];
+                
+                // 加载完标题后，再加载对应的mv表视图
+                [self loadMVData];
+                self.view.userInteractionEnabled = YES;
+            }
+        }];
+        
+    }
+    
+}
+
+
+
+- (void)loadMVData
+{
+    
+    NSMutableDictionary *jsonDict = [self loadJsonDict];
+    //    //打榜日期
+    //    if (_rankModel.dateCode) {
+    //        [jsonDict setObject:_rankModel.dateCode forKey:@"dateCode"];
+    //    }
+    //     [jsonDict setObject:@"20131007" forKey:@"dateCode"];
+    [self requestData:jsonDict];
+    
+}
+
+- (NSMutableDictionary *)loadJsonDict
+{
+    NSString *jsonRequest = [self.paramDic JSONRepresentation];
+    
+    NSMutableDictionary *jsonDict = [NSMutableDictionary dictionaryWithObject:jsonRequest forKey:@"deviceinfo"]
+    ;
+    [jsonDict setObject:@"20" forKey:@"size"];
+    [jsonDict setObject:@"0" forKey:@"offset"];
+    _mvRequestParam = [self.ereasArray[_titleTableView.currentIndex] objectForKey:@"code"];
+    //请求MV需要上面的 参数
+    [jsonDict setObject:_mvRequestParam forKey:@"area"];
+    return jsonDict;
+}
+
+- (void)requestData:(NSMutableDictionary *)jsonDict
+{
+    [DataService requestWithURL:@"http://mapi.yytcdn.com/vchart/show.json" params:jsonDict httpMethod:@"POST" finishBlock:^(id result) {
+//        NSLog(@"result:%@", result);
+        NSArray *array = [result objectForKey:@"videos"];
+        NSMutableArray *addArray = [NSMutableArray array];
+        for (NSDictionary *dic in array) {
+            MVmodel *model = [[MVmodel alloc] initWithDataDic:dic];
+            [addArray addObject:model];
+            [model release];
+        }
+        
+        self.MVArray = addArray;
+        
+        if (!_rankModel) {
+            _rankModel = [[VRankModel alloc] initWithDataDic:result];
+        }else
+        {
+            [_rankModel release];
+            _rankModel = [[VRankModel alloc] initWithDataDic:result];
+        }
+        
+        _publishDateLabel.text = [NSString stringWithFormat:@"%@年 %@期   ( %@ - %@ )", _rankModel.year, _rankModel.no, _rankModel.beginDateText, _rankModel.endDateText];
+        
+        // 判断按钮状态
+        if ([_rankModel.nextDateCode intValue] != 0)
+        {
+            [_rightButton setEnabled:YES];
+            _rightButton.alpha = 1.0;
+        }else
+        {
+            [_rightButton setEnabled:NO];
+            _rightButton.alpha = 0.5;
+        }
+        
+        if (_rankModel.prevDateCode != 0)
+        {
+            [_leftButton setEnabled:YES];
+            _leftButton.alpha = 1.0;
+        }else
+        {
+            [_leftButton setEnabled:NO];
+            _leftButton.alpha = 0.5;
+        }
+        
+        if (self.MVArray.count > 0)
+        {
+            // 同样的，先确定数据已请求下来了
+            [self initMvView];
+        }
+        
+    }];
+}
+
+- (void)leftButtonAction
+{
+    NSMutableDictionary *jsonDict = [self loadJsonDict];
+    //打榜日期
+    [jsonDict setObject:_rankModel.prevDateCode forKey:@"datecode"];
+    [self requestData:jsonDict];
+}
+
+- (void)rightButtonAction
+{
+    NSMutableDictionary *jsonDict = [self loadJsonDict];
+    //打榜日期
+    [jsonDict setObject:_rankModel.nextDateCode forKey:@"datecode"];
+    [self requestData:jsonDict];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [_rankModel release];
+    [_MVArray release];
+    [_ereasArray release];
+    [_publishDateView release];
+    [_publishDateLabel release];
+    [_leftButton release];
+    [_rightButton release];
+    [super dealloc];
+}
+
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+@end

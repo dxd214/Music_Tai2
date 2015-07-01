@@ -1,0 +1,116 @@
+//
+//  CollectionVC.m
+//  YinYueTai
+//
+//  Created by 张佳仁 on 13-10-23.
+//  Copyright (c) 2013年 KSY. All rights reserved.
+//
+
+#import "CollectionVC.h"
+#import "VlistModel.h"
+
+@interface CollectionVC ()
+
+@end
+
+@implementation CollectionVC
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+        self.vlistArray = [NSMutableArray array];
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
+    if ([self isOline]) {
+        [self loadData];
+    }
+}
+
+- (void)tapAction{
+    [super tapAction];
+    if ([self isOline]) {
+        [self loadData];
+        
+    }
+
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    UIImage *navImg = [UIImage imageNamed:@"Title_VlistGood.png"];
+    [self titleImageSet:navImg];
+   
+}
+
+- (void)loadData{
+    
+    NSString *jsonRequest = [self.paramDic JSONRepresentation];
+    
+    NSMutableDictionary *jsonDict = [NSMutableDictionary dictionaryWithObject:jsonRequest forKey:@"deviceinfo"]
+    ;
+    
+    [jsonDict setObject:@"20" forKey:@"size"];
+
+    NSString *offset = [NSString stringWithFormat:@"%i",_vlistArray.count];
+    [jsonDict setObject:offset forKey:@"offset"];
+    
+    [DataService requestWithURL:@"http://mapi.yytcdn.com/playlist/list.json" params:jsonDict httpMethod:@"POST" finishBlock:^(id result) {
+        NSArray *array = [result objectForKey:@"playLists"];
+        NSMutableArray *dicArray = [NSMutableArray array];
+        for (NSDictionary *dic in array) {
+            VlistModel *model = [[VlistModel alloc] initWithDataDic:dic];
+            [dicArray addObject:model];
+            [model release];
+        }
+        [_vlistArray addObjectsFromArray:dicArray];
+        [self initView];
+        
+    
+    }];
+    
+}
+
+
+- (void)initView{
+    
+    if (!_vlistTavleView) {
+        
+   
+    _vlistTavleView = [[CollectionTableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight  - 57) style:UITableViewStylePlain];
+        _vlistTavleView.backgroundColor = [UIColor clearColor];
+        _vlistTavleView.separatorColor = [UIColor clearColor];
+        _vlistTavleView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        [self.view addSubview:_vlistTavleView];
+    
+    _vlistTavleView.pullDownBlock = ^(){
+       
+        [_vlistTavleView performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:1];
+
+    };
+    _vlistTavleView.pullUpBlock = ^(){
+         [self loadData];
+    };
+        
+    }else{
+        
+    }
+    _vlistTavleView.showArray = _vlistArray;
+    [_vlistTavleView performSelector:@selector(reloadData) withObject:nil afterDelay:1];
+    
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+@end

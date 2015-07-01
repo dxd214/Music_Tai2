@@ -1,0 +1,26 @@
+//
+//  BsaeView.h
+//  FirstMoive
+//
+//  Created by 张佳仁 on 13-8-31.
+//  Copyright (c) 2013年 张佳仁. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface BsaeView : UITableView<UITableViewDataSource,UITableViewDelegate>{
+    float _egde;
+}
+
+@property(nonatomic, assign)NSInteger mark;
+
+@property(nonatomic, retain)NSArray *modeArray;
+
+
+
+@property(nonatomic, assign)NSInteger index1;
+
+- (id)initWithFrame:(CGRect)frame style:(UITableViewStyle)style;
+- (void)scrollCellToCenter:(UIScrollView *)scrollView;
+
+@end

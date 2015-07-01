@@ -1,0 +1,27 @@
+//
+//  MVmodel.h
+//  YinYueTai
+//
+//  Created by 张佳仁 on 13-10-25.
+//  Copyright (c) 2013年 KSY. All rights reserved.
+//
+
+#import "WXBaseModel.h"
+
+@interface MVmodel : WXBaseModel<NSCoding>
+
+@property(nonatomic, retain)NSNumber        *MVID;           // 微博ID
+@property(nonatomic, copy)NSString          *title;          // 浮生未歇 官方版
+@property(nonatomic, copy)NSString          *description;    // SONY旗下歌姬藍井エイル将于11月13日发行第5张单曲「
+@property(nonatomic, copy)NSString          *artistName;    // 毕书尽
+@property(nonatomic, copy)NSString          *posterPic;      // 海报图片
+@property(nonatomic, copy)NSString          *thumbnailPic;   // 缩略图地址
+@property(nonatomic, copy)NSString          *url;            // MP4
+@property(nonatomic, copy)NSString          *hdUrl;          // flv 高清
+@property(nonatomic, retain)NSNumber        *videoSize;      // MP4的大小
+@property(nonatomic, retain)NSNumber        *hdVideoSize;    // 高清size
+@property(nonatomic, retain)NSNumber        *uhdVideoSize;   // 0
+@property(nonatomic, retain)NSNumber        *status;         // 200
+
+
+@end

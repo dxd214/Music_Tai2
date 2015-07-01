@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12F45" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="ArtistSearchName" representedClassName="ArtistSearchName" syncable="YES">
+        <attribute name="searchName" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="MVSearchName" representedClassName="MVSearchName" syncable="YES">
+        <attribute name="searchName" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="PlayListSearchName" representedClassName="PlayListSearchName" syncable="YES">
+        <attribute name="searchName" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="MVSearchName" positionX="160" positionY="192" width="128" height="58"/>
+        <element name="PlayListSearchName" positionX="160" positionY="192" width="128" height="58"/>
+        <element name="ArtistSearchName" positionX="160" positionY="192" width="128" height="58"/>
+    </elements>
+</model>

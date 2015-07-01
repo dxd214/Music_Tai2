@@ -1,0 +1,34 @@
+//
+//  PlayListDetailViewController.h
+//  YinYueTai
+//
+//  Created by Dick on 13-10-27.
+//  Copyright (c) 2013年 KSY. All rights reserved.
+//
+
+#import "BaseViewController.h"
+#import "HomeModel.h"
+#import "PlayListModel.h"
+#import "BaseTableView.h"
+#import "MVmodel.h"
+@interface PlayListDetailViewController : BaseViewController
+
+@property (retain, nonatomic) IBOutlet UIView *headerTitleView;
+@property (retain, nonatomic) IBOutlet UILabel *titleLabel;
+@property (retain, nonatomic) IBOutlet UILabel *mvNumLabel;
+@property (retain, nonatomic) IBOutlet UIView *footerView;
+
+@property(nonatomic,retain)BaseTableView *mvTableView;
+
+@property (nonatomic, retain) NSArray *data;
+@property (nonatomic, retain) HomeModel *homeModel;
+@property (nonatomic, retain) PlayListModel *playListModel;
+@property (nonatomic, retain) MVmodel *mvModel;
+@property (nonatomic, retain) NSString *mvId;
+
+- (IBAction)playButtonClick:(id)sender;
+- (IBAction)collectAction:(id)sender;
+- (IBAction)shareAction:(id)sender;
+- (IBAction)weiXin:(id)sender;
+
+@end

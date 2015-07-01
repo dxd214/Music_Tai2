@@ -1,0 +1,27 @@
+//
+//  VRankVC.h
+//  YinYueTai
+//
+//  Created by 张佳仁 on 13-10-23.
+//  Copyright (c) 2013年 KSY. All rights reserved.
+//
+
+#import "BaseViewController.h"
+#import "VRankModel.h"
+#import "TitleTableView.h"
+#import "BaseTableView.h"
+
+@interface VRankVC : BaseViewController
+{
+    UIView  *_publishDateView;   //  打榜日期视图
+    UILabel *_publishDateLabel;  //  打榜日期
+}
+@property(nonatomic,retain)BaseTableView *mvTableView;
+@property(nonatomic, retain)NSArray *ereasArray;//地区名字
+@property(nonatomic, retain)NSArray *MVArray;   //mv的数组
+@property (nonatomic, retain)TitleTableView *titleTableView; // 滚动标题
+@property (nonatomic, retain)NSString *mvRequestParam; // mv视图的请求参数
+
+
+@property(nonatomic, retain)VRankModel *rankModel;
+@end

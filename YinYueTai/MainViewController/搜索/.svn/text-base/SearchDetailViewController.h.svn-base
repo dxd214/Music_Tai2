@@ -1,0 +1,28 @@
+//
+//  SearchDetailViewController.h
+//  YinYueTai
+//
+//  Created by Dick on 13-10-30.
+//  Copyright (c) 2013年 KSY. All rights reserved.
+//
+
+#import "BaseViewController.h"
+#import "MVTableView.h"
+
+@interface SearchDetailViewController : BaseViewController<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
+
+@property (nonatomic, retain) NSString *keyWord;
+
+@property (nonatomic, retain) MVTableView *mvTbView;
+@property (nonatomic, retain) NSArray *mvData;
+
+@property (retain, nonatomic) IBOutlet UIView *headerView;
+@property (retain, nonatomic) IBOutlet UITextField *textField;
+@property (retain, nonatomic) IBOutlet UITableView *tableView;
+@property (retain, nonatomic) IBOutlet UIButton *mvButton;
+@property (retain, nonatomic) IBOutlet UIButton *playListButton;
+@property (retain, nonatomic) IBOutlet UIButton *artistButton;
+@property (nonatomic, retain) NSArray *defaultSearchArr;
+- (IBAction)cancelSearchAction:(id)sender;
+
+@end

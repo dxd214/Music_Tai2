@@ -1,0 +1,147 @@
+//
+//  MoreVC.m
+//  YinYueTai
+//
+//  Created by 张佳仁 on 13-10-23.
+//  Copyright (c) 2013年 KSY. All rights reserved.
+//
+
+#import "MoreVC.h"
+#import "MoreCell.h"
+
+@interface MoreVC ()
+
+@end
+
+@implementation MoreVC
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+        
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
+    
+    NSArray *firstArr = @[@"账号管理"];
+    NSArray *secondArr = @[@"绑定分享", @"网络提醒", @"去为我好评", @"推送通知"];
+    NSArray *thirdArr = @[@"新手引导", @"意见反馈", @"帮助指南", @"应用推荐", @"关于"];
+    
+    NSArray *firstImgArr = @[@"More_User.png"];
+    NSArray *secondImgArr = @[@"More_Share.png", @"More_NetWork.png", @"More_Grade.png", @"More_Push.png"];
+    NSArray *thirdImgArr = @[@"More_Guide.png", @"More_FeedBack.png", @"More_Help.png", @"More_recommend.png", @"More_About.png"];
+    _titleArr = @[firstArr, secondArr, thirdArr];
+    _imgArr = @[firstImgArr, secondImgArr, thirdImgArr];
+    _tableView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - 20 - 44 );
+    _tableView.backgroundColor = [UIColor clearColor];
+    _tableView.separatorColor = [UIColor clearColor];
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableView.showsVerticalScrollIndicator = NO;
+    [self.view addSubview:_tableView];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self titleImageSet:[UIImage imageNamed:@"Title_More.png"]];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - UITableViewDataSource, UITableViewDelegate
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    switch (section)
+    {
+        case 0:
+            return 1;
+            break;
+        case 1:
+            return 4;
+            break;
+        case 2:
+            return 5;
+            break;
+        default:
+            return 0;
+            break;
+    }
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 3;
+}
+
+- (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 40;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *identifier = @"kMoreCell";
+    MoreCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    if (cell == nil)
+    {
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"MoreCell" owner:self options:NULL]lastObject];
+        cell.textLabel.backgroundColor = [UIColor clearColor];
+        cell.backgroundColor = [UIColor clearColor];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+    }
+    
+    if (indexPath.section == 0)
+    {
+//        UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"More_HeadCell.png"] highlightedImage:[UIImage imageNamed:@"More_HeadCell_Sel.png"]];
+//        cell.backgroundView = imgView;
+        [cell.backGroundButton setImage:[UIImage imageNamed:@"More_HeadCell@2x.png"] forState:UIControlStateNormal];
+        [cell.backGroundButton setImage:[UIImage imageNamed:@"More_HeadCell_Sel@2x.png"] forState:UIControlStateHighlighted];
+        cell.userNameLabel.text = @"未登录";
+    }else
+    {
+        if (indexPath.row == 0)
+        {
+            [cell.backGroundButton setImage:[UIImage imageNamed:@"More_CellHead@2x.png"] forState:UIControlStateNormal];
+            [cell.backGroundButton setImage:[UIImage imageNamed:@"More_CellHead_Sel@2x.png"] forState:UIControlStateHighlighted];
+        }else if (indexPath.row == [_titleArr[indexPath.section] count] - 1)
+        {
+            [cell.backGroundButton setImage:[UIImage imageNamed:@"More_CellFloor@2x.png"] forState:UIControlStateNormal];
+            [cell.backGroundButton setImage:[UIImage imageNamed:@"More_CellFloor_Sel@2x.png"] forState:UIControlStateHighlighted];
+
+        }else
+        {
+            [cell.backGroundButton setImage:[UIImage imageNamed:@"More_CellMiddle@2x.png"] forState:UIControlStateNormal];
+            [cell.backGroundButton setImage:[UIImage imageNamed:@"More_CellMiddle_Sel@2x.png"] forState:UIControlStateHighlighted];
+        }
+    }
+    
+    cell.titleLabel.text = _titleArr[indexPath.section][indexPath.row];
+    cell.indexPath = indexPath;
+    
+    cell.userImgView.image = [UIImage imageNamed:_imgArr[indexPath.section][indexPath.row]];
+    return cell;
+}
+
+
+
+- (NSInteger)isOline
+{
+    return 1;
+}
+
+- (void)viewDidUnload {
+    [self setTableView:nil];
+    [super viewDidUnload];
+}
+@end

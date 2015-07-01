@@ -1,0 +1,64 @@
+//
+//  CollectionTableView.m
+//  YinYueTai
+//
+//  Created by 张佳仁 on 13-10-27.
+//  Copyright (c) 2013年 KSY. All rights reserved.
+//
+
+#import "CollectionTableView.h"
+#import "VlistCell.h"
+#import "PlayListDetailViewController.h"
+#import "UIView+Additions.h"
+
+@implementation CollectionTableView
+
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        // Initialization code
+        self.scrollEnabled = NO;
+    }
+    return self;
+}
+
+- (VlistCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    //    @"addVideo.png"
+    static NSString *indentifier = @"listCell";
+    VlistCell *cell = [tableView dequeueReusableCellWithIdentifier:indentifier];
+    if (cell == nil) {
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"VlistCell" owner:self options:nil] lastObject];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+       
+       
+//        cell.backgroundView = backImage;
+    
+//        cell.selectedBackgroundView = backImage;
+        
+    }
+    cell.model = self.showArray[indexPath.row];
+    
+    return cell;
+    
+    
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+//    PlayListDetailViewController *playVC = [[PlayListDetailViewController alloc] init];
+//    VlistModel *model = self.showArray[indexPath.row];
+//    playVC.mvId  = [model.vlistId stringValue];
+//    [self.viewController.navigationController pushViewController:playVC animated:YES];
+//    [playVC release];
+}
+
+/*
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect
+{
+    // Drawing code
+}
+*/
+
+@end

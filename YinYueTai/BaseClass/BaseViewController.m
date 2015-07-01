@@ -1,0 +1,186 @@
+//
+//  BaseViewController.m
+//  YinYueTai
+//
+//  Created by 张佳仁 on 13-10-23.
+//  Copyright (c) 2013年 KSY. All rights reserved.
+//
+
+#import "BaseViewController.h"
+
+
+
+
+
+
+@interface BaseViewController ()
+
+@property(nonatomic, retain)UIView *noNetView; //没网时加图片
+
+@end
+
+@implementation BaseViewController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+        self.hidesBottomBarWhenPushed = YES;
+        [self deviceMessage];
+
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+	// Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundView.png"]];
+    NSUInteger count = self.navigationController.viewControllers.count;
+    
+   
+    
+    if (count > 1) {
+        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];
+        [button setImage:[UIImage imageNamed:@"return.png"] forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:@"return_Sel.png"] forState:UIControlStateSelected];
+        [button addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+        self.navigationItem.leftBarButtonItem = backItem;
+
+       
+    }else{
+         
+     
+           }
+
+    
+}
+
+
+
+//设置二级页面的titleImage2
+
+- (void)titleImageSet:(UIImage *)image{
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundView.png"]];
+    NSUInteger count = self.navigationController.viewControllers.count;
+    BaseNavController *nav =(BaseNavController *)self.navigationController;
+    
+    nav.titleImage.image = image;
+    nav.titleImage.frame = CGRectMake((kScreenWidth - image.size.width) / 2, (44 - image.size.height) / 2 , image.size.width, image.size.height);
+    if (count > 1) {
+       
+    }else{
+        
+    }
+}
+
+
+- (void)backAction{
+    CATransition* transition = [CATransition animation];
+    transition.duration = 0.35;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = @"oglFlip"; //kCATransitionMoveIn; //, kCATransitionPush, kCATransitionReveal, kCATransitionFade
+    //transition.subtype = kCATransitionFromTop; //kCATransitionFromLeft, kCATransitionFromRight, kCATransitionFromTop, kCATransitionFromBottom
+    transition.subtype = kCATransitionFromRight;
+    [self.navigationController.view.layer addAnimation:transition forKey:nil];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (NSInteger)isOline{
+    
+    Reachability *r= [Reachability reachabilityWithHostName:@"www.apple.com"];
+    switch ([r currentReachabilityStatus]) {
+        case NotReachable:{
+            // 没有网络连接
+            return 0;
+        }
+            break;
+        case ReachableViaWWAN:{
+            // 使用3G网络
+            return 1;
+        }
+            break;
+        case ReachableViaWiFi:{
+            // 使用WiFi网络
+            return 2;
+        }
+            break;
+    }
+    return 0;
+}
+
+- (void)deviceMessage{
+
+    CGRect rect =[UIScreen mainScreen].bounds;//frame
+//    float ov = [[[UIDevice currentDevice] systemVersion] floatValue]; //版本号
+    
+//    NSString *ovString = [NSString stringWithFormat:@"%f.1",ov];
+    NSString *ovString = [[UIDevice currentDevice] systemVersion];
+    NSString *deviceType = [UIDevice currentDevice].model; //设备类型  //要真机 写死 
+    CGFloat scale_screen = [UIScreen mainScreen].scale; //缩放比
+    int a = rect.size.height * scale_screen;
+    int b = rect.size.width * scale_screen;
+    
+
+    NSString *typeOfNet = [NSString string];
+    if ([self isOline] == 0) {
+        typeOfNet = NULL;
+    }else if ([self isOline] == 1){
+        typeOfNet = @"3G"; //不确定3G
+    }else{
+        typeOfNet = @"WIFI";
+    }
+    
+    if ([self isOline]) {
+        
+        if (_noNetView) {
+            _noNetView.hidden = YES;
+        }
+        
+        NSString *rn = [NSString stringWithFormat:@"%i*%i",a,b];
+        NSArray *keyArray = @[@"aid",@"os",@"as",@"ov",@"rn"];// aid  os  必须要  dn uid cr 不知求
+        NSArray *valueArray = @[@"10101009",@"iPhone OS",typeOfNet,ovString,rn] ;//aid 不知道求
+        self.paramDic = [NSDictionary dictionaryWithObjects:valueArray forKeys:keyArray];
+        
+
+    }else{
+        //没网咯时加 
+        UIImage *image = [UIImage imageNamed:@"nosignal.png"];
+        if (!_noNetView) {
+            _noNetView = [[UIView alloc] initWithFrame:CGRectMake(100, 160,(kScreenWidth - 100)/2, (kScreenHeight - 160)/2)];
+                UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake((_noNetView.width - image.size.width) / 2, (_noNetView.height - image.size.height) / 2 - 100, image.size.width, image.size.height)];
+            imageView.userInteractionEnabled = YES;
+            UILabel *lable1 = [[UILabel alloc] initWithFrame:CGRectMake(imageView.left, imageView.bottom, imageView.width, 20)];
+            [_noNetView addSubview:imageView];
+            lable1.text = @"您的网络不给力,";
+            lable1.backgroundColor = [UIColor clearColor];
+            UILabel *lable2 = [[UILabel alloc] initWithFrame:CGRectMake(imageView.left , lable1.bottom, imageView.width , 20)];
+            lable2.text = @"请刷新,";
+            lable2.backgroundColor = [UIColor clearColor];
+            [_noNetView addSubview:lable1];
+            [_noNetView addSubview:lable2];
+            
+            _noNetView.backgroundColor = [UIColor clearColor];
+        imageView.image = image;
+        [self.view addSubview:_noNetView];
+            
+            //没网络时加手势
+            
+            UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)];
+            [_noNetView addGestureRecognizer:gesture];
+        }
+    
+    }
+    
+}
+
+- (void)tapAction{
+    [self deviceMessage];
+}
+
+
+
+@end

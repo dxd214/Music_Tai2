@@ -1,0 +1,217 @@
+10
+
+dir
+0
+svn://admin@192.168.1.131/YieTai7/YinYueTai/D3/ShareSDK_v2.5.1/Connection
+svn://admin@192.168.1.131
+add
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+e367c6d1-38d5-4efc-98c2-7272a0e46e58
+
+SohuWeiboConnection.framework
+dir
+
+
+
+add
+
+TumblrConnection.framework
+dir
+
+
+
+add
+
+InstapaperConnection.framework
+dir
+
+
+
+add
+
+DouBanConnection.framework
+dir
+
+
+
+add
+
+FacebookConnection.framework
+dir
+
+
+
+add
+
+InstapaperResource.bundle
+dir
+
+
+
+add
+
+FlickrConnection.framework
+dir
+
+
+
+add
+
+WeChatConnection.framework
+dir
+
+
+
+add
+
+PinterestConnection.framework
+dir
+
+
+
+add
+
+DropboxConnection.framework
+dir
+
+
+
+add
+
+SohuConnection.framework
+dir
+
+
+
+add
+
+GooglePlusConnection.framework
+dir
+
+
+
+add
+
+SinaWeiboConnection.framework
+dir
+
+
+
+add
+
+QQConnection.framework
+dir
+
+
+
+add
+
+MailConnection.framework
+dir
+
+
+
+add
+
+KaiXinConnection.framework
+dir
+
+
+
+add
+
+T163WeiboConnection.framework
+dir
+
+
+
+add
+
+PocketConnection.framework
+dir
+
+
+
+add
+
+TencentWeiboConnection.framework
+dir
+
+
+
+add
+
+YouDaoNoteConnection.framework
+dir
+
+
+
+add
+
+EverNoteConnection.framework
+dir
+
+
+
+add
+
+RenRenConnection.framework
+dir
+
+
+
+add
+
+PrintConnection.framework
+dir
+
+
+
+add
+
+QZoneConnection.framework
+dir
+
+
+
+add
+
+LinkedInConnection.framework
+dir
+
+
+
+add
+
+SMSConnection.framework
+dir
+
+
+
+add
+
+TwitterConnection.framework
+dir
+
+
+
+add
+

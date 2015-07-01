@@ -1,0 +1,37 @@
+//
+//  MVTableView.h
+//  YinYueTai
+//
+//  Created by 张佳仁 on 13-10-26.
+//  Copyright (c) 2013年 KSY. All rights reserved.
+//
+
+#import "BaseTableView.h"
+#import "EGORefreshTableHeaderView.h"
+typedef void(^PullDownBlock) () ;
+typedef void(^PullUpBlock) ();
+
+@interface MVTableView : BaseTableView<EGORefreshTableHeaderDelegate>{
+   
+    BOOL _reloading;
+    UIImageView *_footImage;
+//    CALayer *_arrowImage;
+    UILabel *_footLable;
+    float mark1;
+    float mark2;
+    UIActivityIndicatorView *_activityView;
+
+
+}
+ 
+@property(nonatomic, retain)EGORefreshTableHeaderView *refreshView;
+@property(nonatomic, retain)UIView *footViewl;
+
+@property(nonatomic, copy)PullDownBlock pullDownBlock;
+@property(nonatomic, copy)PullUpBlock pullUpBlock;
+
+- (void)doneLoadingTableViewData;
+
+
+
+@end

@@ -1,0 +1,987 @@
+10
+
+dir
+0
+svn://admin@192.168.1.131/YieTai7/YinYueTai/D3/ShareSDK_v2.5.1/Extend/GooglePlusSDK/GooglePlus.bundle
+svn://admin@192.168.1.131
+add
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+e367c6d1-38d5-4efc-98c2-7272a0e46e58
+
+gpp_sign_in_light_icon_disabled@2x.png
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+es_CR.lproj
+dir
+
+
+
+add
+
+he.lproj
+dir
+
+
+
+add
+
+gpp_sign_in_dark_button_normal.png
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+nb.lproj
+dir
+
+
+
+add
+
+hi.lproj
+dir
+
+
+
+add
+
+es_GT.lproj
+dir
+
+
+
+add
+
+zh_HK.lproj
+dir
+
+
+
+add
+
+pt_BR.lproj
+dir
+
+
+
+add
+
+fr.lproj
+dir
+
+
+
+add
+
+gpp_sign_in_dark_button_normal@2x.png
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+nl.lproj
+dir
+
+
+
+add
+
+fil.lproj
+dir
+
+
+
+add
+
+gpp_sign_in_dark_icon_normal.png
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+hu.lproj
+dir
+
+
+
+add
+
+es_US.lproj
+dir
+
+
+
+add
+
+es_SV.lproj
+dir
+
+
+
+add
+
+fr_CH.lproj
+dir
+
+
+
+add
+
+zh.lproj
+dir
+
+
+
+add
+
+ca.lproj
+dir
+
+
+
+add
+
+gpp_sign_in_light_button_normal.png
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+es_UY.lproj
+dir
+
+
+
+add
+
+af.lproj
+dir
+
+
+
+add
+
+es_PA.lproj
+dir
+
+
+
+add
+
+en_IN.lproj
+dir
+
+
+
+add
+
+es_DO.lproj
+dir
+
+
+
+add
+
+gpp_sign_in_dark_icon_disabled.png
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+es_PE.lproj
+dir
+
+
+
+add
+
+en_SG.lproj
+dir
+
+
+
+add
+
+zh_TW.lproj
+dir
+
+
+
+add
+
+id.lproj
+dir
+
+
+
+add
+
+el.lproj
+dir
+
+
+
+add
+
+gsw.lproj
+dir
+
+
+
+add
+
+gpp_sign_in_light_button_pressed.png
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+gpp_sign_in_light_icon_normal.png
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+en.lproj
+dir
+
+
+
+add
+
+ar.lproj
+dir
+
+
+
+add
+
+gpp_sign_in_dark_icon_disabled@2x.png
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+cs.lproj
+dir
+
+
+
+add
+
+in.lproj
+dir
+
+
+
+add
+
+et.lproj
+dir
+
+
+
+add
+
+ko.lproj
+dir
+
+
+
+add
+
+de_AT.lproj
+dir
+
+
+
+add
+
+it.lproj
+dir
+
+
+
+add
+
+sk.lproj
+dir
+
+
+
+add
+
+es_PY.lproj
+dir
+
+
+
+add
+
+gpp_sign_in_light_icon_disabled.png
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+gpp_sign_in_dark_button_pressed@2x.png
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+fa.lproj
+dir
+
+
+
+add
+
+be.lproj
+dir
+
+
+
+add
+
+bg.lproj
+dir
+
+
+
+add
+
+es_CO.lproj
+dir
+
+
+
+add
+
+es_AR.lproj
+dir
+
+
+
+add
+
+sw.lproj
+dir
+
+
+
+add
+
+ja.lproj
+dir
+
+
+
+add
+
+en_ZA.lproj
+dir
+
+
+
+add
+
+fi.lproj
+dir
+
+
+
+add
+
+gpp_sign_in_dark_icon_pressed@2x.png
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+hr.lproj
+dir
+
+
+
+add
+
+ln.lproj
+dir
+
+
+
+add
+
+en_GB.lproj
+dir
+
+
+
+add
+
+gpp_sign_in_dark_button_pressed.png
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+es_MX.lproj
+dir
+
+
+
+add
+
+gpp_sign_in_light_button_pressed@2x.png
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+gpp_sign_in_light_icon_normal@2x.png
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+pl.lproj
+dir
+
+
+
+add
+
+th.lproj
+dir
+
+
+
+add
+
+no.lproj
+dir
+
+
+
+add
+
+gpp_sign_in_light_button_disabled@2x.png
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+gpp_sign_in_dark_button_disabled.png
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+gpp_sign_in_light_icon_pressed.png
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+vi.lproj
+dir
+
+
+
+add
+
+en_IE.lproj
+dir
+
+
+
+add
+
+lt.lproj
+dir
+
+
+
+add
+
+tl.lproj
+dir
+
+
+
+add
+
+ro.lproj
+dir
+
+
+
+add
+
+lv.lproj
+dir
+
+
+
+add
+
+pt.lproj
+dir
+
+
+
+add
+
+tr.lproj
+dir
+
+
+
+add
+
+pt_PT.lproj
+dir
+
+
+
+add
+
+ru.lproj
+dir
+
+
+
+add
+
+es_BO.lproj
+dir
+
+
+
+add
+
+gpp_sign_in_light_icon_pressed@2x.png
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+GooglePlus
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+es_HN.lproj
+dir
+
+
+
+add
+
+am.lproj
+dir
+
+
+
+add
+
+es_NI.lproj
+dir
+
+
+
+add
+
+gpp_sign_in_light_button_normal@2x.png
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+zu.lproj
+dir
+
+
+
+add
+
+Info.plist
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+es_VE.lproj
+dir
+
+
+
+add
+
+zh_CN.lproj
+dir
+
+
+
+add
+
+de_CH.lproj
+dir
+
+
+
+add
+
+gpp_sign_in_light_button_disabled.png
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+es_419.lproj
+dir
+
+
+
+add
+
+es.lproj
+dir
+
+
+
+add
+
+es_PR.lproj
+dir
+
+
+
+add
+
+mo.lproj
+dir
+
+
+
+add
+
+es_EC.lproj
+dir
+
+
+
+add
+
+sl.lproj
+dir
+
+
+
+add
+
+iw.lproj
+dir
+
+
+
+add
+
+ms.lproj
+dir
+
+
+
+add
+
+uk.lproj
+dir
+
+
+
+add
+
+da.lproj
+dir
+
+
+
+add
+
+sr.lproj
+dir
+
+
+
+add
+
+gpp_sign_in_dark_icon_normal@2x.png
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+es_CL.lproj
+dir
+
+
+
+add
+
+gpp_sign_in_dark_button_disabled@2x.png
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+gpp_sign_in_dark_icon_pressed.png
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+de.lproj
+dir
+
+
+
+add
+
+sv.lproj
+dir
+
+
+
+add
+

@@ -1,0 +1,38 @@
+<modify-entry
+   name=""
+   copied="true"
+   copyfrom-rev="100"
+   schedule="add"
+   copyfrom-url="svn://admin@192.168.1.131/YieTai7/YinYueTai/Image/%E5%85%B6%E4%BB%96/PlayListImage.png"/>
+<modify-entry
+   text-time="1970-01-01T00:00:00.000000Z"
+   name=""
+   url="svn://admin@192.168.1.131/YieTai7/YinYueTai/Image/%E5%85%B6%E4%BB%96/%10%10%10%10%10%10%10%10%10%10%10%10%10%10%10%10%10%10%10%10%10%10%10%10%10%10%10%10%10%10%10%10%10%10%10%10"
+   kind="file"
+   deleted="false"
+   working-size="-1"
+   absent="false"
+   revision="100"/>
+<modify-entry
+   name=""
+   present-props=""
+   has-prop-mods="false"
+   has-props="true"/>
+<mv
+   dest=".svn/prop-base/.svn-base"
+   name=".svn/prop-base/svn-7FAVKH"/>
+<readonly
+   name=".svn/prop-base/.svn-base"/>
+<cp-and-translate
+   dest=""
+   name=".svn/tmp/svn-CcOxPI"/>
+<rm
+   name=".svn/tmp/svn-CcOxPI"/>
+<mv
+   dest=".svn/text-base/.svn-base"
+   name=".svn/tmp/svn-LBhkzc"/>
+<readonly
+   name=".svn/text-base/.svn-base"/>
+<modify-entry
+   name=""
+   checksum="1ee656fd1bfa92e37da881d2bc257ef1"/>
